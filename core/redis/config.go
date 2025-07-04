@@ -1,0 +1,31 @@
+package redis
+
+import (
+	"errors"
+	"reflect"
+
+	"github.com/hihibug/microdule/v2/core"
+)
+
+var (
+	// ErrEmptyAddr etcd 地址为空输出错误
+	ErrEmptyAddr = errors.New("empty redis addr")
+)
+
+type Config struct {
+	DB       int    `json:"db" yaml:"db"`
+	Addr     string `json:"addr" yaml:"addr"`
+	Password string `json:"password" yaml:"password"`
+}
+
+func (c *Config) Validate() error {
+	if reflect.DeepEqual(c, &Config{}) {
+		return core.ErrEmptyConfig
+	}
+
+	if c.Addr == "" {
+		return ErrEmptyAddr
+	}
+
+	return nil
+}

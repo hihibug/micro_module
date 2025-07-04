@@ -1,0 +1,53 @@
+# http configuration
+rest:
+  mode: "debug"
+  LogColType: false
+  LogPath: ""
+  UseHtml: false
+  DelimsStr: ""
+  DelimsEnd: ""
+  StaticPath: ""
+  TmpPath: ""
+  Addr: "8999"
+rpc:
+  Addr: "18999"
+  name: "TestService"
+
+QiNu:
+  Key: "123"
+  
+# etcd configuration
+etcd:
+  addr: '172.16.102.111:2379,172.16.102.111:2380'
+  password : ''
+  time-out : 5
+
+# mysql connect configuration
+db:
+  dbType: 'mysql'
+  path: '127.0.0.1:3306'
+  config: 'charset=utf8mb4&parseTime=True&loc=Local'
+  dbName: 'user_content'
+  username: 'root'
+  password: 'root'
+  maxIdleCons: 10
+  maxOpenCons: 100
+  logMode: "info"
+
+# mysql connect configuration
+redis:
+  addr: '127.0.0.1:6379'
+  db: 0
+  password: ''
+
+# logger configuration
+log:
+  level: 'info'
+  format: 'json'
+  prefix: 'Framework-test'
+  director: 'storage/log'
+  linkName: 'latest_log'
+  showLine: false
+  encodeLevel: 'LowercaseColorLevelEncoder'
+  stacktraceKey: 'stacktrace'
+  logInConsole: false
