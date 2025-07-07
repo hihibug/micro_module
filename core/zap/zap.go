@@ -6,7 +6,7 @@ import (
 	"path"
 	"time"
 
-	"github.com/hihibug/microdule/v2/core/utils"
+	"github.com/hihibug/micro_module/core/utils"
 	zaprotatelogs "github.com/lestrrat-go/file-rotatelogs"
 	"go.uber.org/zap"
 	"go.uber.org/zap/zapcore"

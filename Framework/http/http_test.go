@@ -7,25 +7,24 @@ import (
 	"github.com/gin-gonic/gin"
 	"github.com/go-playground/validator/v10"
 	"github.com/gofiber/fiber/v2"
-	"github.com/hihibug/microdule/v2/Framework/http"
-	httpConf "github.com/hihibug/microdule/v2/Framework/http/config"
-	microdule_fiber "github.com/hihibug/microdule/v2/core/fiber"
-	microdule_gin "github.com/hihibug/microdule/v2/core/gin"
+	"github.com/hihibug/micro_module/Framework/http"
+	httpConf "github.com/hihibug/micro_module/Framework/http/config"
+	micro_module_fiber "github.com/hihibug/micro_module/core/fiber"
+	micro_module_gin "github.com/hihibug/micro_module/core/gin"
 
 	//"github.com/hihibug/Framework/v2/Http/rest_gin"
 	"testing"
 )
 
 func TestFiberRest(t *testing.T) {
-	r := http.NewHttp(microdule_fiber.NewFiber(&httpConf.Config{
-		Mode:    "fiber",
+	r := http.NewHttp(micro_module_fiber.NewFiber(&httpConf.Config{
 		LogPath: "",
 		UseHtml: false,
-		Addr:    "8999",
+		Port:    ":8080",
 	}))
 
 	if r.Client() != nil {
-		rs := r.Client().(*microdule_fiber.Fiber)
+		rs := r.Client().(*micro_module_fiber.Fiber)
 		fmt.Println(rs)
 		err := rs.Validator.RegisterValidator("test", "不能为空且不等于admin", notNullAndAdmin)
 		fmt.Println(err)
@@ -66,15 +65,14 @@ func TestGinRest(t *testing.T) {
 	//	UseHtml: false,
 	//	Addr:    "8999",
 	//})
-	r := microdule_gin.NewGin(&httpConf.Config{
-		Mode:    "gin",
+	r := micro_module_gin.NewGin(&httpConf.Config{
 		LogPath: "",
 		UseHtml: false,
-		Addr:    "8999",
+		Port:    "8999",
 	})
 
 	if r.Client() != nil {
-		rs := r.Client().(*microdule_gin.Gin)
+		rs := r.Client().(*micro_module_gin.Gin)
 		fmt.Println(rs)
 		err := rs.Validator.RegisterValidator("test", "不能为空且不等于admin", notNullAndAdmin)
 		fmt.Println(err)

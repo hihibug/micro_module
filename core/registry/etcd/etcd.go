@@ -4,11 +4,12 @@ import (
 	"context"
 	"encoding/json"
 	"errors"
-	rpc "github.com/hihibug/microdule/v2/Framework/rpc/config"
-	"github.com/hihibug/microdule/v2/core/etcd"
-	etcdClientV3 "go.etcd.io/etcd/client/v3"
 	"log"
 	"strconv"
+
+	rpc "github.com/hihibug/micro_module/Framework/rpc/config"
+	"github.com/hihibug/micro_module/core/etcd"
+	etcdClientV3 "go.etcd.io/etcd/client/v3"
 )
 
 type ServiceLeaseKeepAliveResponse = *etcdClientV3.LeaseKeepAliveResponse

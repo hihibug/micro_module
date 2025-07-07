@@ -1,12 +1,13 @@
-package microdule_fiber
+package micro_module_fiber
 
 import (
-	res "github.com/hihibug/microdule/v2/Framework/http/response"
 	"net/http"
+
+	res "github.com/hihibug/micro_module/Framework/http/response"
 
 	"github.com/gofiber/fiber/v2"
 
-	"github.com/hihibug/microdule/v2/core/utils"
+	"github.com/hihibug/micro_module/core/utils"
 )
 
 type (

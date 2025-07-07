@@ -2,15 +2,16 @@ package nacos
 
 import (
 	"fmt"
-	rpc "github.com/hihibug/microdule/v2/Framework/rpc/config"
+	"log"
+	"strconv"
+	"strings"
+
+	rpc "github.com/hihibug/micro_module/Framework/rpc/config"
 	"github.com/nacos-group/nacos-sdk-go/v2/clients"
 	"github.com/nacos-group/nacos-sdk-go/v2/clients/naming_client"
 	"github.com/nacos-group/nacos-sdk-go/v2/common/constant"
 	"github.com/nacos-group/nacos-sdk-go/v2/model"
 	"github.com/nacos-group/nacos-sdk-go/v2/vo"
-	"log"
-	"strconv"
-	"strings"
 )
 
 type Nacos struct {

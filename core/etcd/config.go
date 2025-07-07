@@ -4,7 +4,7 @@ import (
 	"errors"
 	"reflect"
 
-	"github.com/hihibug/microdule/v2/core"
+	"github.com/hihibug/micro_module/core"
 	"go.uber.org/zap"
 )
 

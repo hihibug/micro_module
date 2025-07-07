@@ -2,18 +2,19 @@ package rpc_test
 
 import (
 	"fmt"
-	rpc2 "github.com/hihibug/microdule/v2/Framework/rpc"
-	rpc "github.com/hihibug/microdule/v2/Framework/rpc/config"
-	etcd2 "github.com/hihibug/microdule/v2/core/etcd"
-	"github.com/hihibug/microdule/v2/core/grpc"
-	"github.com/hihibug/microdule/v2/core/registry/etcd"
-	"github.com/hihibug/microdule/v2/core/registry/nacos"
-	"github.com/nacos-group/nacos-sdk-go/v2/common/constant"
 	"os"
 	"os/signal"
 	"syscall"
 	"time"
 	"unsafe"
+
+	rpc2 "github.com/hihibug/micro_module/Framework/rpc"
+	rpc "github.com/hihibug/micro_module/Framework/rpc/config"
+	etcd2 "github.com/hihibug/micro_module/core/etcd"
+	"github.com/hihibug/micro_module/core/grpc"
+	"github.com/hihibug/micro_module/core/registry/etcd"
+	"github.com/hihibug/micro_module/core/registry/nacos"
+	"github.com/nacos-group/nacos-sdk-go/v2/common/constant"
 
 	//"github.com/hihibug/Framework/v2/core/grpc"
 

@@ -1,4 +1,4 @@
-module github.com/hihibug/microdule/v2
+module github.com/hihibug/micro_module
 
 go 1.19
 

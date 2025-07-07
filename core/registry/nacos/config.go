@@ -1,7 +1,7 @@
 package nacos
 
 import (
-	"github.com/hihibug/microdule/v2/Framework/rpc/config"
+	"github.com/hihibug/micro_module/Framework/rpc/config"
 	"github.com/nacos-group/nacos-sdk-go/v2/common/constant"
 )
 

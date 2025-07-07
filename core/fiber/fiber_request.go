@@ -1,8 +1,8 @@
-package microdule_fiber
+package micro_module_fiber
 
 import (
 	"github.com/gofiber/fiber/v2"
-	"github.com/hihibug/microdule/v2/Framework/http/validator"
+	"github.com/hihibug/micro_module/Framework/http/validator"
 )
 
 type FiberRequest struct {

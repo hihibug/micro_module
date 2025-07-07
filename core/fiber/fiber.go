@@ -1,17 +1,19 @@
-package microdule_fiber
+package micro_module_fiber
 
 import (
-	httpConf "github.com/hihibug/microdule/v2/Framework/http/config"
-	"github.com/hihibug/microdule/v2/Framework/http/request"
-	"github.com/hihibug/microdule/v2/Framework/http/response"
-	"github.com/hihibug/microdule/v2/Framework/http/validator"
 	"os"
 	"time"
+
+	"github.com/hihibug/micro_module/Framework/http"
+	httpConf "github.com/hihibug/micro_module/Framework/http/config"
+	"github.com/hihibug/micro_module/Framework/http/request"
+	"github.com/hihibug/micro_module/Framework/http/response"
+	"github.com/hihibug/micro_module/Framework/http/validator"
 
 	"github.com/gofiber/fiber/v2"
 	"github.com/gofiber/fiber/v2/middleware/logger"
 	"github.com/gofiber/template/html/v2"
-	"github.com/hihibug/microdule/v2/core/utils"
+	"github.com/hihibug/micro_module/core/utils"
 )
 
 type Fiber struct {
@@ -21,13 +23,13 @@ type Fiber struct {
 	Validator validator.Validator
 }
 
-func NewFiber(conf *httpConf.Config) *Fiber {
+func NewFiber(conf *httpConf.Config) http.Http {
 	defPath, _ := os.Getwd()
 	fc := fiber.Config{
 		DisableStartupMessage: true,
 	}
 	if conf.UseHtml {
-		fc.Views = html.New(defPath+"/"+conf.TmpPath, ".html")
+		fc.Views = html.New(defPath+"/"+conf.HtmlPath, ".html")
 	}
 
 	app := fiber.New(fc)
@@ -49,7 +51,7 @@ func NewFiber(conf *httpConf.Config) *Fiber {
 
 	// 初始化页面
 	if conf.UseHtml {
-		app.Static(defPath+"/"+conf.StaticPath, defPath+"/"+conf.TmpPath)
+		app.Static(defPath+"/"+conf.StaticPath, defPath+"/"+conf.HtmlPath)
 	}
 
 	return &Fiber{
@@ -74,7 +76,7 @@ func (f *Fiber) Client() any {
 
 func (f *Fiber) Run() error {
 	// log.Printf("http  port: %s \n", f.conf.Addr)
-	return f.Route.Listen(":" + f.conf.Addr)
+	return f.Route.Listen(":" + f.conf.Port)
 }
 
 func (f *Fiber) Response(c any) response.Response {

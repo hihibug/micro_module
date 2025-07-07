@@ -7,7 +7,7 @@ import (
 	"reflect"
 	"time"
 
-	"github.com/hihibug/microdule/v2/core"
+	"github.com/hihibug/micro_module/core"
 	"gorm.io/gorm"
 	"gorm.io/gorm/logger"
 )

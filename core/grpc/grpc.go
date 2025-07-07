@@ -3,13 +3,14 @@ package grpc
 import (
 	"errors"
 	"fmt"
-	"github.com/hihibug/microdule/v2/Framework/rpc"
-	"github.com/hihibug/microdule/v2/Framework/rpc/config"
 	"log"
 	"net"
 	"strings"
 
-	"github.com/hihibug/microdule/v2/core/utils"
+	"github.com/hihibug/micro_module/Framework/rpc"
+	"github.com/hihibug/micro_module/Framework/rpc/config"
+
+	"github.com/hihibug/micro_module/core/utils"
 	"google.golang.org/grpc/credentials/insecure"
 
 	grpcA "google.golang.org/grpc"

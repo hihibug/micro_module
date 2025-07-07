@@ -4,7 +4,7 @@ import (
 	"log"
 	"time"
 
-	"github.com/hihibug/microdule/v2/core/zap"
+	"github.com/hihibug/micro_module/core/zap"
 	"gorm.io/driver/mysql"
 	"gorm.io/gorm"
 	"gorm.io/gorm/logger"

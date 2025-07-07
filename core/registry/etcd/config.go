@@ -1,8 +1,8 @@
 package etcd
 
 import (
-	"github.com/hihibug/microdule/v2/Framework/rpc/config"
-	"github.com/hihibug/microdule/v2/core/etcd"
+	"github.com/hihibug/micro_module/Framework/rpc/config"
+	"github.com/hihibug/micro_module/core/etcd"
 )
 
 type Config struct {

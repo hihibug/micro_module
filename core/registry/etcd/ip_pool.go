@@ -3,10 +3,11 @@ package etcd
 import (
 	"context"
 	"encoding/json"
-	rpcConf "github.com/hihibug/microdule/v2/Framework/rpc/config"
-	clientv3 "go.etcd.io/etcd/client/v3"
 	"strconv"
 	"sync"
+
+	rpcConf "github.com/hihibug/micro_module/Framework/rpc/config"
+	clientv3 "go.etcd.io/etcd/client/v3"
 )
 
 type Pool struct {

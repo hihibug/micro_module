@@ -2,7 +2,8 @@ package viper
 
 import (
 	"github.com/fsnotify/fsnotify"
-	"github.com/hihibug/microdule/v2/core/gorm"
+	"github.com/hihibug/micro_module/Framework/config"
+	"github.com/hihibug/micro_module/core/gorm"
 	"github.com/spf13/viper"
 )
 
@@ -12,13 +13,14 @@ type ConfigViper interface {
 
 type Viper struct {
 	Vp   *viper.Viper
-	Data *Config
+	Data *config.Config
 	Err  error
 }
 
-func NewViper(path string) Viper {
-	conf := &Config{}
+func NewViper(path string, defaultConf func(*viper.Viper)) Viper {
+	conf := &config.Config{}
 	v := viper.New()
+	defaultConf(v)
 	v.SetConfigFile(path)
 	err := v.ReadInConfig()
 	if err != nil {

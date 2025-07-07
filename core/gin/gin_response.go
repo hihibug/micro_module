@@ -1,11 +1,12 @@
-package microdule_gin
+package micro_module_gin
 
 import (
-	res "github.com/hihibug/microdule/v2/Framework/http/response"
 	"net/http"
 
+	res "github.com/hihibug/micro_module/Framework/http/response"
+
 	"github.com/gin-gonic/gin"
-	"github.com/hihibug/microdule/v2/core/utils"
+	"github.com/hihibug/micro_module/core/utils"
 )
 
 type (

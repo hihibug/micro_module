@@ -1,7 +1,7 @@
 package rpc
 
 import (
-	"github.com/hihibug/microdule/v2/Framework/rpc/config"
+	"github.com/hihibug/micro_module/Framework/rpc/config"
 )
 
 type Registry interface {

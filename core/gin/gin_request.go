@@ -1,8 +1,8 @@
-package microdule_gin
+package micro_module_gin
 
 import (
 	"github.com/gin-gonic/gin"
-	"github.com/hihibug/microdule/v2/Framework/http/validator"
+	"github.com/hihibug/micro_module/Framework/http/validator"
 )
 
 type GinRequest struct {

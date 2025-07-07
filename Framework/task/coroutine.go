@@ -8,7 +8,7 @@ import (
 	"runtime/debug"
 	"sync"
 
-	"github.com/hihibug/microdule/v2/Framework/_global"
+	"github.com/hihibug/micro_module/Framework/_global"
 	"github.com/jedib0t/go-pretty/v6/table"
 	"golang.org/x/exp/maps"
 )

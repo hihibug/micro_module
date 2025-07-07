@@ -1,19 +1,19 @@
-package microdule_gin
+package micro_module_gin
 
 import (
-	"fmt"
-	httpConf "github.com/hihibug/microdule/v2/Framework/http/config"
-	"github.com/hihibug/microdule/v2/Framework/http/request"
-	"github.com/hihibug/microdule/v2/Framework/http/response"
-	"github.com/hihibug/microdule/v2/Framework/http/validator"
 	"io"
 	"net/http"
 	"os"
 	"time"
 
+	httpConf "github.com/hihibug/micro_module/Framework/http/config"
+	"github.com/hihibug/micro_module/Framework/http/request"
+	"github.com/hihibug/micro_module/Framework/http/response"
+	"github.com/hihibug/micro_module/Framework/http/validator"
+
 	"github.com/gin-gonic/gin"
-	"github.com/hihibug/microdule/v2/core/gin/middleware"
-	"github.com/hihibug/microdule/v2/core/utils"
+	"github.com/hihibug/micro_module/core/gin/middleware"
+	"github.com/hihibug/micro_module/core/utils"
 )
 
 type Gin struct {
@@ -42,9 +42,9 @@ func NewGin(conf *httpConf.Config) *Gin {
 	// 初始化页面
 	if conf.UseHtml {
 		defPath, _ := os.Getwd()
-		route.Delims("{{", "}}")
-		route.Static(defPath+"/"+conf.StaticPath, defPath+"/"+conf.TmpPath)
-		route.LoadHTMLGlob(defPath + "/" + conf.TmpPath + "/*")
+		route.Delims(conf.DelimsLeft, conf.DelimsRight)
+		route.Static(defPath+"/"+conf.StaticPath, defPath+"/"+conf.HtmlPath)
+		route.LoadHTMLGlob(defPath + "/" + conf.HtmlPath + "/*")
 	}
 
 	//注册GinCors
@@ -76,23 +76,15 @@ func (g *Gin) Client() any {
 }
 
 func (g *Gin) Run() error {
-	// log.Printf("http1  port: %s \n", _global.conf.Addr)
-	// _global.CliTable.AppendRow(table.Row{"http", "success", ":" + _global.conf.Addr})
 	s := &http.Server{
-		Addr:           ":" + g.conf.Addr,
+		Addr:           ":" + g.conf.Port,
 		Handler:        g.Route,
-		ReadTimeout:    10 * time.Second,
-		WriteTimeout:   10 * time.Second,
+		ReadTimeout:    time.Duration(g.conf.ReadTimeout) * time.Second,
+		WriteTimeout:   time.Duration(g.conf.WriteTimeout) * time.Second,
 		MaxHeaderBytes: 1 << 20,
 	}
 
-	fmt.Println(s.ListenAndServe().Error())
-	// err := s.ListenAndServe()
-	// if err != nil {
-	// return err
-	// }
-
-	return nil
+	return s.ListenAndServe()
 }
 
 func (g *Gin) Response(c any) response.Response {
