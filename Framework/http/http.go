@@ -37,7 +37,7 @@ func NewMicroHttp(http func(*http.Config) Http) Framework.Option {
 		return &MicroHttp{
 			name:    "http",
 			Context: context.Background(),
-			client:  http(options.Config.Data.Http),
+			client:  http(options.Config.GetBindVal().Http),
 		}
 	}
 }

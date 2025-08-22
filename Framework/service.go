@@ -4,8 +4,8 @@ import (
 	"context"
 
 	"github.com/hihibug/micro_module/Framework/config"
+	"github.com/hihibug/micro_module/Framework/log"
 	"github.com/hihibug/micro_module/core/viper"
-	"github.com/hihibug/micro_module/core/zap"
 	"github.com/jedib0t/go-pretty/v6/table"
 )
 
@@ -21,8 +21,8 @@ type (
 	Options struct {
 		Name    string
 		Context context.Context
-		Config  viper.Viper
-		Log     zap.Log
+		Config  config.Config
+		Log     log.Log
 	}
 
 	service struct {
@@ -41,21 +41,11 @@ func newService(logPath string) *service {
 		Context: context.Background(),
 	}
 	if logPath == "" {
-		logPath = "config/default_conf.yaml"
+		logPath = "./config.yaml"
 	}
-	Config(logPath)(&opt)
-
-	if opt.Config.Err != nil {
-		panic(opt.Config.Err)
-	}
-
-	if opt.Name == "" {
-		opt.Name = opt.Config.Data.Name
-	}
-
-	if opt.Log == nil {
-		opt.Log = zap.NewZap(opt.Config.Data.Log)
-	}
+	newConfig(logPath)(&opt)
+	opt.Name = opt.Config.GetBindVal().Name
+	opt.Log = log.NewLog(opt.Config.GetBindVal().Log)
 
 	return &service{
 		opts:   opt,
@@ -63,7 +53,7 @@ func newService(logPath string) *service {
 	}
 }
 
-func Config(path string) Option {
+func newConfig(path string) Option {
 	return func(options *Options) OptionHandle {
 		options.Config = viper.NewViper(path, config.InitConfig)
 		return nil

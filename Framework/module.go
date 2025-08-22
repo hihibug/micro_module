@@ -8,7 +8,7 @@ import (
 	"runtime/debug"
 
 	"github.com/hihibug/micro_module/Framework/_global"
-	"github.com/hihibug/micro_module/core/viper"
+	"github.com/hihibug/micro_module/Framework/config"
 
 	"github.com/jedib0t/go-pretty/v6/table"
 	"golang.org/x/exp/maps"
@@ -17,11 +17,10 @@ import (
 type Service interface {
 	Name() string
 	Init(...Option)
-	Config() viper.Viper
-	// Options() *Options
+	Config() config.Config
 	Modules(string) OptionHandle
-	Close()
 	Start() error
+	Close()
 }
 
 func NewService(path string) Service {
@@ -43,7 +42,7 @@ func (s *service) Init(opts ...Option) {
 	}
 }
 
-func (s *service) Config() viper.Viper {
+func (s *service) Config() config.Config {
 	return s.opts.Config
 }
 

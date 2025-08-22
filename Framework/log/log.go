@@ -1,4 +1,4 @@
-package zap
+package log
 
 import (
 	"fmt"
@@ -6,6 +6,7 @@ import (
 	"path"
 	"time"
 
+	"github.com/hihibug/micro_module/Framework/log/config"
 	"github.com/hihibug/micro_module/core/utils"
 	zaprotatelogs "github.com/lestrrat-go/file-rotatelogs"
 	"go.uber.org/zap"
@@ -15,7 +16,7 @@ import (
 type (
 	Zap struct {
 		Log   *zap.Logger
-		Conf  *Config
+		Conf  *config.Config
 		level zapcore.Level
 	}
 
@@ -29,8 +30,7 @@ type (
 	}
 )
 
-func NewZap(conf *Config) Log {
-
+func NewLog(conf *config.Config) Log {
 	err := conf.Validate()
 	if err != nil {
 		panic(err)

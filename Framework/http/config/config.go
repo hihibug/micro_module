@@ -28,5 +28,6 @@ func InitConfig(v *viper.Viper) {
 	v.SetDefault(prfix+"WriteTimeout", 10)
 	// v.Vp.SetDefault(prfix+"MaxHeaderBytes", 1<<20)
 	v.SetDefault(prfix+"IsLog", false)
+	v.SetDefault(prfix+"LogPath", "storage/log")
 	v.SetDefault(prfix+"UseHtml", false)
 }
